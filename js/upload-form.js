@@ -1,6 +1,7 @@
 import { initEffectSlider, updateEffect } from './imageEffects.js';
 import { isEscape } from './until.js';
 import { sendData } from './api.js';
+//import { initScale, removeEventListenerFromScaleElements } from './scale.js';
 const MAX_HASHTAGS = 5;
 const HASHTAG_REGEX = /^#[A-Za-z0-9а-яё]{1,19}$/i;
 
@@ -26,6 +27,7 @@ const showForm = () => {
   modalOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', handleKeydown);
+  //initScale();
 };
 
 // Скрытие формы
@@ -35,6 +37,7 @@ const closeForm = () => {
   modalOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', handleKeydown);
+  //removeEventListenerFromScaleElements();
 };
 
 // Разделение хэштегов
@@ -144,7 +147,6 @@ const setUserFormSubmit = (onSuccess) => {
   });
 };
 
-// Ваши другие обработчики, такие как закрытие формы, валидация
 uploadForm.querySelector('.img-upload__cancel').addEventListener('click', () => {
   // Код для закрытия формы
 });

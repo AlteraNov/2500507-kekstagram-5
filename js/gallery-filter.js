@@ -1,6 +1,6 @@
 import { renderingThumbnails } from './pictures.js';
 import { getData } from './api.js';
-import { showingAlert, debounce } from './until.js';
+import { showingAlert, debounce, getRandomImages } from './until.js';
 
 const DEBOUNCE_DELAY = 500;
 const RANDOM_PICTURE_COUNT = 10;
@@ -12,21 +12,6 @@ const DISCUSSED_FILTER_ID = 'filter-discussed';
 const filterButtons = document.body.querySelectorAll('.img-filters__button');
 let currentFilterId = DEFAULT_FILTER_ID;
 let activeFilterButton = document.getElementById(DEFAULT_FILTER_ID);
-// Функция для получения случайных изображений
-const getRandomImages = (imageArray, count) => {
-  if (imageArray.length <= count) {
-    return imageArray.slice();
-  }
-  const remainingImages = imageArray.slice();
-  const randomImages = [];
-
-  for (let i = 0; i < count; i++) {
-    const randomIndex = Math.floor(Math.random() * remainingImages.length);
-    randomImages.push(remainingImages[randomIndex]);
-    remainingImages.splice(randomIndex, 1);
-  }
-  return randomImages;
-};
 // Функция для фильтрации изображений
 const filterImages = (images) => {
   switch (currentFilterId) {

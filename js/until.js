@@ -33,4 +33,18 @@ function debounce (callback, timeoutDelay = 500) {
     timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
   };
 }
-export{getRandomInteger, isEscape, showingAlert, debounce};
+const getRandomImages = (imageArray, count) => {
+  if (imageArray.length <= count) {
+    return imageArray.slice();
+  }
+  const remainingImages = imageArray.slice();
+  const randomImages = [];
+
+  for (let i = 0; i < count; i++) {
+    const randomIndex = Math.floor(Math.random() * remainingImages.length);
+    randomImages.push(remainingImages[randomIndex]);
+    remainingImages.splice(randomIndex, 1);
+  }
+  return randomImages;
+};
+export{getRandomInteger, isEscape, showingAlert, debounce, getRandomImages};
